@@ -36,7 +36,7 @@ var speed = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,3,3,3,4,4,5]
 //1 = y co-ordinate of the drop(same for every drop initially)
 for(var x = 0; x < columns; x++){
 	drops[x] = 1;
-	fast[x] = 1;
+	fast[x] = speed[Math.floor(Math.random()*speed.length)];
 }
 
 //drawing the characters
@@ -57,6 +57,9 @@ function draw()
 		for(var y = 0; y < step; y++){
 			//a random code character to print
 			var text = code[Math.floor(Math.random()*code.length)];
+			//create white bursts
+			if (Math.random() > 0.975) { ctx.fillStyle = "#FFF"; /*white text*/}
+			else { ctx.fillStyle = "#0F0"; /*green text*/}
 			//x = i*font_size, y = value of drops[i]*font_size
 			ctx.fillText(text, i*font_size, drops[i]*font_size);
 		
